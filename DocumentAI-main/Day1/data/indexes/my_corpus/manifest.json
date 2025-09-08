@@ -1,0 +1,6 @@
+{
+  "backend": "minilm",
+  "dim": 384,
+  "count": 118,
+  "created_at": 1756626826.0897255
+}
