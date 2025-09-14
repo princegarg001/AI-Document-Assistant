@@ -8,7 +8,7 @@ import gradio as gr
 import requests
 
 # --- Configuration ---
-BACKEND_URL_DEFAULT = os.getenv("BACKEND_URL", "http://localhost:8000").rstrip("/")
+BACKEND_URL_DEFAULT = os.getenv("BACKEND_URL", "https://ai-document-assistant-kqmj.onrender.com").rstrip("/")
 
 
 # --- Backend Communication ---
