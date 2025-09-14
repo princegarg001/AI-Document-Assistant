@@ -1,0 +1,15 @@
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+.env
+*.db
+*.sqlite3
+.DS_Store
+.git
+.gitignore
+.vscode
+*.ipynb
+.venv/
+input_data/
+.gradio/
