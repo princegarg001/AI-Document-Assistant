@@ -1,7 +1,0 @@
-services:
-  - type: web
-    name: document-ai-frontend
-    env: python
-    rootDir: Day3
-    buildCommand: pip install -r requirements.txt
-    startCommand: python gradio_app.py
