@@ -26,10 +26,12 @@ RUN pip install --no-cache-dir \
     langchain-community \
     langchain-google-genai \
     langchain-experimental \
-    Pillow
+    Pillow \
+    faiss-cpu
 
 # Expose the port your Flask app runs on
 EXPOSE 8000
 
 # Default CMD
 CMD ["python", "app.py"]
+
