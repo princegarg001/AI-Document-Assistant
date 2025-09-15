@@ -396,6 +396,10 @@ def retrieve_top_k(query: str, k: int = TOP_K_DEFAULT) -> List[Document]:
 # Flask Endpoints
 # =============================================================================
 
+@app.route("/")
+def index():
+    return jsonify({"message": "AI Document Assistant Backend is running"})
+
 @app.route("/health", methods=["GET"])
 def health():
     """
@@ -649,4 +653,4 @@ if __name__ == "__main__":
     except Exception as e:
         print(f"[WARN] Embeddings init failed: {e}")
 
-    app.run(host="0.0.0.0", port=int(os.getenv("PORT", "8000")), debug=True)
+    app.run(host="0.0.0.0", port=int(os.getenv("PORT", "8000")), debug=false)
