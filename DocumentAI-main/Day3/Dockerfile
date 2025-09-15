@@ -1,18 +1,24 @@
-# Example backend Dockerfile
-FROM python:3.10
+# Use official Python image
+FROM python:3.10-slim
+
+# Set working directory
 WORKDIR /app
+
+# Install system dependencies for OCR
+RUN apt-get update && \
+    apt-get install -y --no-install-recommends \
+        tesseract-ocr \
+    && rm -rf /var/lib/apt/lists/*
+
+# Copy requirements and install dependencies
+COPY requirements.txt ./
+RUN pip install --no-cache-dir -r requirements.txt
+
+# Copy the rest of the app
 COPY . .
-RUN pip install --no-cache-dir \
-	flask \
-	flask-cors \
-	PyMuPDF \
-	google-generativeai \
-	pytesseract \
-	python-dotenv \
-	langchain \
-	langchain-community \
-	langchain-google-genai \
-	langchain-experimental \
-	Pillow
-EXPOSE 8000
-CMD ["python", "app.py"]
+
+# Expose the port (Render sets PORT env var automatically)
+EXPOSE 7860
+
+# Start Gradio app
+CMD ["python", "gradio_app.py"]
