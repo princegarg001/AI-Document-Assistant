@@ -653,4 +653,4 @@ if __name__ == "__main__":
     except Exception as e:
         print(f"[WARN] Embeddings init failed: {e}")
 
-    app.run(host="0.0.0.0", port=int(os.getenv("PORT", "8000")), debug=false)
+    app.run(host="0.0.0.0", port=int(os.getenv("PORT", "8000")), debug=False)
