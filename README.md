@@ -1,125 +1,121 @@
-Day 1 & Day 2
+# 📝 RAG Chat Assistant
 
-Basics of:
+[![Python](https://img.shields.io/badge/Python-3.10+-blue?logo=python)](https://www.python.org/) 
+[![Flask](https://img.shields.io/badge/Flask-2.3-green?logo=flask)](https://flask.palletsprojects.com/) 
+[![Gradio](https://img.shields.io/badge/Gradio-3.42-orange?logo=gradio)](https://gradio.app/) 
+[![Docker](https://img.shields.io/badge/Docker-24.0-blue?logo=docker)](https://www.docker.com/) 
+[![FAISS](https://img.shields.io/badge/FAISS-1.7-lightgrey)](https://faiss.ai/)  
 
-PDF and image uploads
+_A Retrieval-Augmented Generation (RAG) application to upload PDFs, text files, and images and chat with them to get source-backed answers._
 
-Text chunking
+---
 
-Vector store creation
+## 🚀 Features
 
-End-to-end RAG flow
+- **File Upload:** PDFs, text files, images (PNG, JPG, TIFF)  
+- **Automatic OCR:** Extract text from scanned PDFs and images  
+- **Vector Indexing:** Searchable knowledge base using FAISS  
+- **Chat Interface:** Ask questions and get answers from your documents  
+- **Source Citations:** Answers include references to the original document and page  
 
-Day 3 – RAG Chat Assistant
+---
 
-Full-featured RAG application with:
+## 🗂️ Project Structure
 
-Flask Backend – File processing, OCR, text chunking, vector indexing, RAG chain
+**Day 1 & Day 2** – Basics of:  
 
-Gradio Frontend – User-friendly interface for file uploads and chat with source-backed responses
+- PDF and image uploads  
+- Text chunking  
+- Vector store creation  
+- End-to-end RAG flow  
 
-✨ Features
+**Day 3 – Full RAG Chat Assistant**  
 
-File Upload: PDFs, text files, and images (PNG, JPG, TIFF)
+**Backend (Flask)**  
 
-Automatic OCR: Extract text from images and scanned PDFs
+- File processing  
+- OCR for scanned documents/images  
+- Text chunking & vector indexing  
+- RAG chain for answering queries  
 
-Vector Indexing: Searchable knowledge base using FAISS
+**Frontend (Gradio)**  
 
-Chat Interface: Ask questions about your documents
+- User-friendly web interface for file uploads and chat  
+- Source-backed responses  
 
-Source Citations: Answers include references to original documents/pages
+---
 
-🛠️ Local Setup & Running
+## 🛠️ Local Setup
 
-You need two terminal windows for backend and frontend.
+**Backend**
 
-1️⃣ Backend Server
+```bash
 # Navigate to project directory
-python -m venv .venv           # Optional virtual environment
-source .venv/bin/activate       # Windows: .venv\Scripts\activate
-
+python -m venv .venv       # optional
+source .venv/bin/activate  # Windows: .venv\Scripts\activate
 pip install -r requirements.txt
-python app.py                   # Backend runs at http://localhost:8000
+python app.py               # Runs at http://localhost:8000
+Frontend
 
-2️⃣ Frontend UI
+bash
+Copy code
 # In a new terminal
-source .venv/bin/activate       # If using virtual environment
-python gradio_app.py            # Gradio UI runs at http://127.0.0.1:7860
-
-🚀 Usage
-
-Check Backend Status – Ensure frontend is connected
-
-Upload Files – Drag & drop PDFs/images in the Upload Files tab, then click Index
-
-Chat – Go to Chat tab, ask a question, press Enter, and see answers with sources
-
+source .venv/bin/activate  # if using virtual environment
+python gradio_app.py        # Runs at http://127.0.0.1:7860
 🐳 Docker Deployment
-
-The project is fully Dockerized, allowing easy deployment:
-
-Build Docker Image
+bash
+Copy code
+# Build Docker Image
 docker build -t rag-chat-assistant .
 
-Run Container
+# Run Container
 docker run -p 8000:8000 -p 7860:7860 rag-chat-assistant
-
-
 Backend → http://localhost:8000
 
 Frontend → http://localhost:7860
 
 ☁️ Deploy on Render
-
 Push your repository to GitHub
 
-Create a new Web Service on Render for the backend:
+Create a Web Service on Render for the backend:
 
 Connect your GitHub repo
 
-Set Build Command: docker build -t rag-backend .
+Build Command: docker build -t rag-backend .
 
-Set Start Command: docker run -p 8000:8000 rag-backend
+Start Command: docker run -p 8000:8000 rag-backend
 
-Create a new Web Service for the frontend similarly:
+Repeat for the frontend service
 
-Connect to the same repo
+✅ Your RAG Chat Assistant is live via Render URLs!
 
-Build & run frontend container
+Live Site: [Add your live site URL here]
 
-✅ Your RAG Chat Assistant is now live and accessible via the Render URLs!
-
-🧩 Technologies Used
-
-Python, Flask, Gradio
-
-OCR: Tesseract
-
-Vector Search: FAISS
-
-Document Handling: PyPDF2, Pillow
-
-LLM Integration for RAG
-
-Docker for containerization
-
-Render for cloud deployment
-
-📂 Supported Files
-
+📂 Supported File Types
 PDFs (.pdf)
 
 Text files (.txt)
 
 Images (.png, .jpg, .jpeg, .tiff)
 
-📖 Example Workflow
+💡 Usage
+Check backend status in the Gradio UI
 
-Upload PDF & images
+Upload files in the Upload Files tab and click Index
 
-Index files into FAISS vector store
+Chat in the Chat tab and get answers with source citations
 
-Ask questions: “What is the revenue growth in Q2?”
+⚡ Technologies
+Python, Flask, Gradio
 
-Receive answers with source citations
+Tesseract OCR
+
+FAISS vector search
+
+PyPDF2, Pillow for document handling
+
+Docker & Render for deployment
+
+LLM integration for RAG
+
+🎬 Demo
