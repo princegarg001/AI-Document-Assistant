@@ -4,7 +4,7 @@ services:
     env: docker
     plan: free
     branch: main
-    dockerfilePath: ./Day3/Dockerfile.backend   # <--- updated path
+    dockerfilePath: ./DocumentAI-main/Day3/Dockerfile.backend
     envVars:
       - key: RENDER_ENV
         value: production
@@ -14,7 +14,7 @@ services:
     env: docker
     plan: free
     branch: main
-    dockerfilePath: ./Day3/Dockerfile           # <--- updated path
+    dockerfilePath: ./DocumentAI-main/Day3/Dockerfile
     envVars:
       - key: BACKEND_URL
         value: https://ai-doc-backend.onrender.com
