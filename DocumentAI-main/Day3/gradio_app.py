@@ -24,13 +24,12 @@ def ping_backend(base_url: str) -> dict:
 
 
 def upload_documents(files, base_url: str):
-    """Send document files to the backend for indexing."""
     if not files:
         return "No files selected.", None
     try:
         files_payload = []
         for f in files:
-            # Use the file-like object directly, Gradio handles reading
+            # Use Gradio's file object directly
             files_payload.append(("files", (f.name, f, "application/octet-stream")))
 
         r = requests.post(f"{base_url}/upload_docs", files=files_payload, timeout=120)
@@ -49,12 +48,12 @@ def upload_documents(files, base_url: str):
 
 
 def upload_images(files, base_url: str):
-    """Send image files to the backend for OCR and indexing."""
     if not files:
         return "No images selected.", None
     try:
         files_payload = []
         for f in files:
+            # Use Gradio's file object directly
             files_payload.append(("files", (f.name, f, "application/octet-stream")))
 
         r = requests.post(f"{base_url}/upload_images", files=files_payload, timeout=120)
@@ -70,9 +69,6 @@ def upload_images(files, base_url: str):
         return "\n".join(msg), data
     except Exception as e:
         return f"Error: {e}", None
-
-
-
 # --- UI Callbacks & Helpers ---
 
 def format_citations(citations):
