@@ -30,13 +30,13 @@ def upload_documents(files, base_url: str):
     try:
         files_payload = []
         for f in files:
-            files_payload.append(("files", (os.path.basename(f.name), open(f.name, "rb"), "application/octet-stream")))
+            # Use the file-like object directly, Gradio handles reading
+            files_payload.append(("files", (f.name, f, "application/octet-stream")))
 
         r = requests.post(f"{base_url}/upload_docs", files=files_payload, timeout=120)
-        if r.status_code != 200:
-            return f"Upload failed: {r.text}", None
-
+        r.raise_for_status()
         data = r.json()
+
         msg = [
             f"**Documents indexed successfully.**",
             f"- Files processed: {data.get('files_processed')}",
@@ -55,13 +55,12 @@ def upload_images(files, base_url: str):
     try:
         files_payload = []
         for f in files:
-            files_payload.append(("files", (os.path.basename(f.name), open(f.name, "rb"), "application/octet-stream")))
+            files_payload.append(("files", (f.name, f, "application/octet-stream")))
 
         r = requests.post(f"{base_url}/upload_images", files=files_payload, timeout=120)
-        if r.status_code != 200:
-            return f"Upload failed: {r.text}", None
-
+        r.raise_for_status()
         data = r.json()
+
         msg = [
             f"**Images OCR'd and indexed successfully.**",
             f"- Files processed: {data.get('files_processed')}",
@@ -71,6 +70,7 @@ def upload_images(files, base_url: str):
         return "\n".join(msg), data
     except Exception as e:
         return f"Error: {e}", None
+
 
 
 # --- UI Callbacks & Helpers ---
